@@ -7,6 +7,8 @@ import pino from 'pino';
 
 import { logger } from '@shared/logger';
 
+import { routes } from './routes';
+
 const app = express();
 
 const [date] = new Date().toISOString().split(/T/g);
@@ -20,14 +22,7 @@ app.use(expressPinoLogger({
 
 app.use(express.json());
 app.use(cors());
-
-app.get('/', (request, response) => {
-  logger.info('test route');
-
-  return response.json({
-    ok: true,
-  });
-});
+app.use(routes);
 
 const port = process.env.PORT ?? 3333;
 
