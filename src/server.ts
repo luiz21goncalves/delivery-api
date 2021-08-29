@@ -1,3 +1,5 @@
+import 'dotenv/config';
+
 import cors from 'cors';
 import express from 'express';
 import expressPinoLogger from 'express-pino-logger';
@@ -27,4 +29,6 @@ app.get('/', (request, response) => {
   });
 });
 
-app.listen(3333, () => logger.info('Server started on port 3333!'));
+const port = process.env.PORT ?? 3333;
+
+app.listen(port, () => logger.info(`Server started on port ${port}!`));
