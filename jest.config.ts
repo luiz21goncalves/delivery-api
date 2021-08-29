@@ -13,4 +13,5 @@ export default {
   preset: 'ts-jest',
   testEnvironment: 'node',
   testMatch: ['**/*.spec.ts'],
+  setupFiles: ['<rootDir>/setup-tests.ts'],
 };
