@@ -1,7 +1,8 @@
-import { v4 as uuid } from 'uuid';
+import { inject, injectable } from 'tsyringe';
 
 import { logger } from '@shared/logger';
 
+import { IUsersRepository } from '../repositories/IUsersRepository';
 import { ICreateUserDTO } from './ICreateUserDTO';
 
 interface IResponse extends ICreateUserDTO {
@@ -10,21 +11,24 @@ interface IResponse extends ICreateUserDTO {
   updated_at: Date;
 }
 
+@injectable()
 class CreateUserUseCase {
+  constructor(
+    @inject('TypeormUsersRepository')
+    private usersRepository: IUsersRepository,
+  ) {}
+
   async execute({ name, email, password }: ICreateUserDTO): Promise<IResponse> {
     logger.debug({
       class: 'CreateUserController',
       args: { name, email, password },
     });
 
-    const user = {
-      id: uuid(),
+    const user = await this.usersRepository.create({
       name,
       email,
       password,
-      created_at: new Date(),
-      updated_at: new Date(),
-    };
+    });
 
     logger.debug({ class: 'CreateUserController', user });
 

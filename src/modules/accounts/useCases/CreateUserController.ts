@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { container } from 'tsyringe';
 
 import { logger } from '@shared/logger';
 
@@ -13,7 +14,7 @@ class CreateUserController {
       args: { name, email, password },
     });
 
-    const createUserUseCase = new CreateUserUseCase();
+    const createUserUseCase = container.resolve(CreateUserUseCase);
 
     const user = await createUserUseCase.execute({ name, email, password });
 
