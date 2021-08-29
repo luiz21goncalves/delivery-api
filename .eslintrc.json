@@ -17,6 +17,8 @@
     "eslint-plugin-import-helpers"
   ],
   "rules": {
+    "class-methods-use-this": "off",
+    "no-useless-constructor": "off",
     "import/no-unresolved": "error",
     "import/prefer-default-export": "off",
     "import/extensions": [
@@ -30,7 +32,7 @@
       "warn",
       {
         "newlinesBetween": "always",
-        "groups": ["module", "/^@shared/", ["parent", "sibling", "index"]],
+        "groups": ["module", "/^@/", ["parent", "sibling", "index"]],
         "alphabetize": { "order": "asc", "ignoreCase": true }
       }
     ],
