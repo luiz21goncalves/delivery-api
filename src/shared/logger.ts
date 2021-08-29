@@ -8,8 +8,9 @@ const logger = pino({
   name,
   prettyPrint: {
     colorize: false,
-    singleLine: false,
+    singleLine: true,
   },
+  level: process.env.LOGGER_LEVEL,
 }, pino.destination(`./logs/app/${date}.log`));
 
 export { logger };
