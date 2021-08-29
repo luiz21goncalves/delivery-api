@@ -7,6 +7,7 @@ import expressPinoLogger from 'express-pino-logger';
 import pino from 'pino';
 
 import { logger } from '@shared/logger';
+import '@shared/container';
 
 import { createDatabaseConnetion } from '../typeorm';
 import { routes } from './routes';
