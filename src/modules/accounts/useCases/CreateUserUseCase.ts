@@ -12,7 +12,10 @@ interface IResponse extends ICreateUserDTO {
 
 class CreateUserUseCase {
   async execute({ name, email, password }: ICreateUserDTO): Promise<IResponse> {
-    logger.debug({ class: 'CreateUserController', args: { name, email, password } });
+    logger.debug({
+      class: 'CreateUserController',
+      args: { name, email, password },
+    });
 
     const user = {
       id: uuid(),

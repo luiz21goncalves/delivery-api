@@ -17,12 +17,17 @@ createDatabaseConnetion();
 
 const [date] = new Date().toISOString().split(/T/g);
 
-app.use(expressPinoLogger({
-  prettyPrint: {
-    colorize: false,
-    singleLine: true,
-  },
-}, pino.destination(`./logs/request/${date}.log`)));
+app.use(
+  expressPinoLogger(
+    {
+      prettyPrint: {
+        colorize: false,
+        singleLine: true,
+      },
+    },
+    pino.destination(`./logs/request/${date}.log`),
+  ),
+);
 
 app.use(express.json());
 app.use(cors());

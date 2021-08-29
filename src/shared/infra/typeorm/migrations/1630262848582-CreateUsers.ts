@@ -33,7 +33,7 @@ export class CreateUsers1630262848582 implements MigrationInterface {
         default: 'now()',
       },
     ],
-  })
+  });
 
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(this.table);
