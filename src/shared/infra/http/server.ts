@@ -1,4 +1,5 @@
 import 'dotenv/config';
+import 'reflect-metadata';
 
 import cors from 'cors';
 import express from 'express';
@@ -7,9 +8,12 @@ import pino from 'pino';
 
 import { logger } from '@shared/logger';
 
+import { createDatabaseConnetion } from '../typeorm';
 import { routes } from './routes';
 
 const app = express();
+
+createDatabaseConnetion();
 
 const [date] = new Date().toISOString().split(/T/g);
 

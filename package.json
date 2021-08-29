@@ -5,15 +5,19 @@
   "author": "Luiz Gonçalves <luizhbgoncalves@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "tsnd -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts"
+    "dev": "tsnd -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
+    "typeorm": "tsnd -r tsconfig-paths/register ./node_modules/typeorm/cli.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-pino-logger": "^6.0.0",
+    "pg": "^8.7.1",
     "pino": "^6.13.1",
     "pino-pretty": "^6.0.0",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.37",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
