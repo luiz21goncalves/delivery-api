@@ -1,15 +1,9 @@
 import { Router } from 'express';
 
-import { logger } from '@shared/logger';
+import { usersRoutes } from './users.routes';
 
 const routes = Router();
 
-routes.get('/', (request, response) => {
-  logger.info('test route');
-
-  return response.json({
-    ok: true,
-  });
-});
+routes.use('/users', usersRoutes);
 
 export { routes };
