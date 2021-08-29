@@ -5,7 +5,7 @@ import express from 'express';
 import expressPinoLogger from 'express-pino-logger';
 import pino from 'pino';
 
-import { logger } from './logger';
+import { logger } from '@shared/logger';
 
 const app = express();
 
