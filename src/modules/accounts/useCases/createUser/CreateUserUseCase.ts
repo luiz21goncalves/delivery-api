@@ -1,9 +1,9 @@
 import { inject, injectable } from 'tsyringe';
 
+import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
 import { IHashProvider } from '@shared/container/providers/HashProvider/models/IHashProvider';
 import { logger } from '@shared/logger';
 
-import { IUsersRepository } from '../repositories/IUsersRepository';
 import { CreateUserError } from './CreateUserError';
 import { ICreateUserDTO } from './ICreateUserDTO';
 

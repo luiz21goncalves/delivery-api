@@ -1,6 +1,6 @@
+import { InMemoryUsersRepository } from '@modules/accounts/repositories/in-memory/InMemoryUsersRepository';
 import { InMemoryHashProvider } from '@shared/container/providers/HashProvider/in-memory/InMemoryHashProvider';
 
-import { InMemoryUsersRepository } from '../repositories/in-memory/InMemoryUsersRepository';
 import { CreateUserError } from './CreateUserError';
 import { CreateUserUseCase } from './CreateUserUseCase';
 
