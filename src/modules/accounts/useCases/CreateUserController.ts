@@ -19,6 +19,7 @@ class CreateUserController {
     const user = await createUserUseCase.execute({ name, email, password });
 
     logger.debug({ class: 'CreateUserController', user });
+    logger.info(`created user ${user.id} ${user.name}`);
 
     return response.json(user);
   }
