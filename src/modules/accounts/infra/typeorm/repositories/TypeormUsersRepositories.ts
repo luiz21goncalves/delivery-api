@@ -1,7 +1,7 @@
 import { getRepository, Repository } from 'typeorm';
 
 import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
-import { ICreateUserDTO } from '@modules/accounts/useCases/ICreateUserDTO';
+import { ICreateUserDTO } from '@modules/accounts/useCases/createUser/ICreateUserDTO';
 import { logger } from '@shared/logger';
 
 import { User } from '../entities/User';

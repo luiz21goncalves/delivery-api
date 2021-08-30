@@ -1,5 +1,5 @@
 import { User } from '@modules/accounts/infra/typeorm/entities/User';
-import { ICreateUserDTO } from '@modules/accounts/useCases/ICreateUserDTO';
+import { ICreateUserDTO } from '@modules/accounts/useCases/createUser/ICreateUserDTO';
 import { logger } from '@shared/logger';
 
 import { IUsersRepository } from '../IUsersRepository';
