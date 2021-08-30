@@ -1,4 +1,5 @@
 import { InMemoryUsersRepository } from '../repositories/in-memory/InMemoryUsersRepository';
+import { CreateUserError } from './CreateUserError';
 import { CreateUserUseCase } from './CreateUserUseCase';
 
 let createUserUseCase: CreateUserUseCase;
@@ -41,6 +42,6 @@ describe('CreateUserUseCase', () => {
         email: 'duplicate@email.com',
         password: '359rSMFcx_hl997',
       }),
-    ).rejects.toEqual(new Error('user already exists'));
+    ).rejects.toEqual(new CreateUserError());
   });
 });

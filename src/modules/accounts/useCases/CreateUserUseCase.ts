@@ -3,6 +3,7 @@ import { inject, injectable } from 'tsyringe';
 import { logger } from '@shared/logger';
 
 import { IUsersRepository } from '../repositories/IUsersRepository';
+import { CreateUserError } from './CreateUserError';
 import { ICreateUserDTO } from './ICreateUserDTO';
 
 interface IResponse extends ICreateUserDTO {
@@ -32,7 +33,7 @@ class CreateUserUseCase {
     });
 
     if (userAlreadyExists) {
-      throw new Error('user already exists');
+      throw new CreateUserError();
     }
 
     const user = await this.usersRepository.create({
