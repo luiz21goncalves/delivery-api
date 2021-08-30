@@ -21,7 +21,7 @@ class CreateUserController {
     logger.debug({ class: 'CreateUserController', user });
     logger.info(`created user ${user.id} ${user.name}`);
 
-    return response.json(user);
+    return response.status(201).json(user);
   }
 }
 
