@@ -1,15 +1,22 @@
+import { InMemoryHashProvider } from '@shared/container/providers/HashProvider/in-memory/InMemoryHashProvider';
+
 import { InMemoryUsersRepository } from '../repositories/in-memory/InMemoryUsersRepository';
 import { CreateUserError } from './CreateUserError';
 import { CreateUserUseCase } from './CreateUserUseCase';
 
 let createUserUseCase: CreateUserUseCase;
 let inMemoryUsersRepository: InMemoryUsersRepository;
+let inMemoryHashProvider: InMemoryHashProvider;
 
 describe('CreateUserUseCase', () => {
   beforeEach(() => {
     inMemoryUsersRepository = new InMemoryUsersRepository();
+    inMemoryHashProvider = new InMemoryHashProvider();
 
-    createUserUseCase = new CreateUserUseCase(inMemoryUsersRepository);
+    createUserUseCase = new CreateUserUseCase(
+      inMemoryUsersRepository,
+      inMemoryHashProvider,
+    );
   });
 
   it('should be able to create a new user', async () => {

@@ -1,5 +1,6 @@
 import { inject, injectable } from 'tsyringe';
 
+import { IHashProvider } from '@shared/container/providers/HashProvider/models/IHashProvider';
 import { logger } from '@shared/logger';
 
 import { IUsersRepository } from '../repositories/IUsersRepository';
@@ -17,6 +18,9 @@ class CreateUserUseCase {
   constructor(
     @inject('TypeormUsersRepository')
     private usersRepository: IUsersRepository,
+
+    @inject('BCryptHahsProvider')
+    private hashProvider: IHashProvider,
   ) {}
 
   async execute({ name, email, password }: ICreateUserDTO): Promise<IResponse> {
@@ -36,10 +40,12 @@ class CreateUserUseCase {
       throw new CreateUserError();
     }
 
+    const passwordHash = await this.hashProvider.genareteHash(password);
+
     const user = await this.usersRepository.create({
       name,
       email,
-      password,
+      password: passwordHash,
     });
 
     logger.debug({ class: 'CreateUserController', user });

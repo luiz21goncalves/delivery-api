@@ -1,3 +1,5 @@
+import './providers';
+
 import { container } from 'tsyringe';
 
 import { TypeormUsersRepository } from '@modules/accounts/infra/typeorm/repositories/TypeormUsersRepositories';
