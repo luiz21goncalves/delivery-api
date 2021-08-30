@@ -34,6 +34,26 @@ class TypeormUsersRepository implements IUsersRepository {
 
     return this.repository.save(user);
   }
+
+  async findByEmail(email: string): Promise<User | undefined> {
+    logger.debug({
+      class: 'TypeormUsersRepository',
+      fn: 'findByEmail',
+      args: { email },
+    });
+
+    const user = this.repository.findOne({
+      where: { email },
+    });
+
+    logger.debug({
+      class: 'TypeormUsersRepository',
+      fn: 'findByEmail',
+      user,
+    });
+
+    return user;
+  }
 }
 
 export { TypeormUsersRepository };
