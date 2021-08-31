@@ -1,4 +1,5 @@
 import { sign } from 'jsonwebtoken';
+import { inject, injectable } from 'tsyringe';
 
 import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
 import { IHashProvider } from '@shared/container/providers/HashProvider/models/IHashProvider';
@@ -8,9 +9,13 @@ import { AuthenticateUserError } from './AuthenticateUserError';
 import { IAuthenticateUserDTO } from './IAuthenticateUserDTO';
 import { IAuthenticateUserResponseDTO } from './IAuthenticateUserResponseDTO';
 
+@injectable()
 class AuthenticateUserUseCase {
   constructor(
+    @inject('TypeormUsersRepository')
     private usersRepository: IUsersRepository,
+
+    @inject('BCryptHashProvider')
     private hashProvider: IHashProvider,
   ) {}
 
