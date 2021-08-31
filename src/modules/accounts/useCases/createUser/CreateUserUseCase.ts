@@ -37,6 +37,7 @@ class CreateUserUseCase {
     });
 
     if (userAlreadyExists) {
+      logger.warn(`create attempt for email ${email}`);
       throw new CreateUserError();
     }
 
