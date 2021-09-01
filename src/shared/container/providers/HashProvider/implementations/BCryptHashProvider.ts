@@ -2,7 +2,7 @@ import { compare, hash } from 'bcrypt';
 
 import { IHashProvider } from '../models/IHashProvider';
 
-class BCryptHahsProvider implements IHashProvider {
+class BCryptHashProvider implements IHashProvider {
   async genareteHash(payload: string): Promise<string> {
     return hash(payload, 8);
   }
@@ -12,4 +12,4 @@ class BCryptHahsProvider implements IHashProvider {
   }
 }
 
-export { BCryptHahsProvider };
+export { BCryptHashProvider };

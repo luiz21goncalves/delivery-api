@@ -2,11 +2,11 @@ import { container } from 'tsyringe';
 
 import { logger } from '@shared/logger';
 
-import { BCryptHahsProvider } from './implementations/BCryptHashProvider';
+import { BCryptHashProvider } from './implementations/BCryptHashProvider';
 
-container.registerSingleton<BCryptHahsProvider>(
-  'BCryptHahsProvider',
-  BCryptHahsProvider,
+container.registerSingleton<BCryptHashProvider>(
+  'BCryptHashProvider',
+  BCryptHashProvider,
 );
 
 logger.info('register singleton for BCryptHahsProvider');

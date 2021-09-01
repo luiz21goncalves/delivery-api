@@ -19,7 +19,7 @@ class CreateUserUseCase {
     @inject('TypeormUsersRepository')
     private usersRepository: IUsersRepository,
 
-    @inject('BCryptHahsProvider')
+    @inject('BCryptHashProvider')
     private hashProvider: IHashProvider,
   ) {}
 
