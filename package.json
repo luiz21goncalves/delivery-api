@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "NODE_ENV=test jest --runInBand --detectOpenHandles",
-    "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files"
+    "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
+    "install": "yarn --frozen-lockfile --production"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
