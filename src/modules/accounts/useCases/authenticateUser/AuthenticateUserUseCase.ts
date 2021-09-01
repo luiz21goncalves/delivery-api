@@ -1,6 +1,7 @@
 import { sign } from 'jsonwebtoken';
 import { inject, injectable } from 'tsyringe';
 
+import { authConfig } from '@config/auth';
 import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
 import { IHashProvider } from '@shared/container/providers/HashProvider/models/IHashProvider';
 import { logger } from '@shared/logger';
@@ -23,6 +24,8 @@ class AuthenticateUserUseCase {
     email,
     password,
   }: IAuthenticateUserDTO): Promise<IAuthenticateUserResponseDTO> {
+    const { secret, expires_in } = authConfig;
+
     const user = await this.usersRepository.findByEmail(email);
 
     if (!user) {
@@ -40,9 +43,9 @@ class AuthenticateUserUseCase {
       throw new AuthenticateUserError();
     }
 
-    const token = sign({}, 'secret', {
+    const token = sign({}, String(secret), {
       subject: user.id,
-      expiresIn: '4h',
+      expiresIn: expires_in,
     });
 
     logger.info(`user ${user.id} logged`);
