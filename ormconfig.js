@@ -5,8 +5,8 @@ const config = {
   username: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
-  entities: ['./dist/modules/**/entities/*.ts'],
-  migrations: ['./dist/shared/infra/typeorm/migrations/*.ts'],
+  entities: ['./dist/modules/**/entities/*.js'],
+  migrations: ['./dist/shared/infra/typeorm/migrations/*.js'],
   cli: {
     migrationsDir: './dist/shared/infra/typeorm/migrations',
   },
