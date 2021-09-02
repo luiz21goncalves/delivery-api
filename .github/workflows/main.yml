@@ -57,3 +57,6 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd ~/api
+            yarn install
+            yarn migrations
+            pm2 restart all
