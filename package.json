@@ -5,13 +5,14 @@
   "author": "Luiz Gonçalves <luizhbgoncalves@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "tsnd -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
+    "dev": "NODE_ENV=development tsnd -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
     "typeorm": "tsnd -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "NODE_ENV=test jest --runInBand --detectOpenHandles",
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
-    "install": "yarn --frozen-lockfile --production"
+    "install": "yarn --frozen-lockfile --production",
+    "migrations": "NODE_ENV=production ./node_modules/typeorm/cli.js migration:run"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
