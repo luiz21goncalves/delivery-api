@@ -12,7 +12,7 @@ const config = {
   },
 };
 
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
   Object.assign(config, {
     entities: ['./src/modules/**/entities/*.ts'],
     migrations: ['./src/shared/infra/typeorm/migrations/*.ts'],
