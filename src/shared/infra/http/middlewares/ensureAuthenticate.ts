@@ -3,7 +3,7 @@ import { verify } from 'jsonwebtoken';
 
 import { authConfig } from '@config/auth';
 import { TypeormUsersRepository } from '@modules/accounts/infra/typeorm/repositories/TypeormUsersRepositories';
-import { EnsureAuthenticateError } from '@shared/errors/EnsureAuthenticateError';
+import { EnsureAuthenticateException } from '@shared/exceptions/EnsureAuthenticateExceptionts';
 
 interface IPayload {
   sub: string;
@@ -17,12 +17,12 @@ async function ensureAuthenticate(
   const authHeader = request.headers.authorization;
 
   if (!authHeader) {
-    throw new EnsureAuthenticateError.MissingToken();
+    throw new EnsureAuthenticateException.MissingToken();
   }
   const [bearer, token] = authHeader.split(' ');
 
   if (!bearer || !token) {
-    throw new EnsureAuthenticateError.MissingToken();
+    throw new EnsureAuthenticateException.MissingToken();
   }
 
   try {
@@ -36,7 +36,7 @@ async function ensureAuthenticate(
     const user = await usersRepository.findById(user_id);
 
     if (!user) {
-      throw new EnsureAuthenticateError.UserNotFound();
+      throw new EnsureAuthenticateException.UserNotFound();
     }
 
     request.user = {
@@ -45,7 +45,7 @@ async function ensureAuthenticate(
 
     next();
   } catch (err) {
-    throw new EnsureAuthenticateError.InvalidToken();
+    throw new EnsureAuthenticateException.InvalidToken();
   }
 }
 

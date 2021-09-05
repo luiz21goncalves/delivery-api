@@ -6,7 +6,7 @@ import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepositor
 import { IHashProvider } from '@shared/container/providers/HashProvider/models/IHashProvider';
 import { logger } from '@shared/logger';
 
-import { AuthenticateUserError } from './AuthenticateUserError';
+import { AuthenticateUserException } from './AuthenticateUserException';
 import { IAuthenticateUserDTO } from './IAuthenticateUserDTO';
 import { IAuthenticateUserResponseDTO } from './IAuthenticateUserResponseDTO';
 
@@ -30,7 +30,7 @@ class AuthenticateUserUseCase {
 
     if (!user) {
       logger.warn(`login attempt with email ${email}`);
-      throw new AuthenticateUserError();
+      throw new AuthenticateUserException();
     }
 
     const passwordMatch = await this.hashProvider.compareHash(
@@ -40,7 +40,7 @@ class AuthenticateUserUseCase {
 
     if (!passwordMatch) {
       logger.warn(`wrong password for user ${user.id}`);
-      throw new AuthenticateUserError();
+      throw new AuthenticateUserException();
     }
 
     const token = sign({}, String(secret), {

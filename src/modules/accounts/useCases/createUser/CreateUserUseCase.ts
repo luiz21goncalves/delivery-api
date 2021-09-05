@@ -4,7 +4,7 @@ import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepositor
 import { IHashProvider } from '@shared/container/providers/HashProvider/models/IHashProvider';
 import { logger } from '@shared/logger';
 
-import { CreateUserError } from './CreateUserError';
+import { CreateUserException } from './CreateUserException';
 import { ICreateUserDTO } from './ICreateUserDTO';
 
 interface IResponse extends ICreateUserDTO {
@@ -38,7 +38,7 @@ class CreateUserUseCase {
 
     if (userAlreadyExists) {
       logger.warn(`create attempt for email ${email}`);
-      throw new CreateUserError();
+      throw new CreateUserException();
     }
 
     const passwordHash = await this.hashProvider.genareteHash(password);

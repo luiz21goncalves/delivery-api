@@ -1,7 +1,7 @@
 import { InMemoryUsersRepository } from '@modules/accounts/repositories/in-memory/InMemoryUsersRepository';
 import { InMemoryHashProvider } from '@shared/container/providers/HashProvider/in-memory/InMemoryHashProvider';
 
-import { AuthenticateUserError } from './AuthenticateUserError';
+import { AuthenticateUserException } from './AuthenticateUserException';
 import { AuthenticateUserUseCase } from './AuthenticateUserUseCase';
 
 let authenticateUserUseCase: AuthenticateUserUseCase;
@@ -52,7 +52,7 @@ describe('AuthenticateUserUseCase', () => {
         email: 'non_existing_user@email.com',
         password: '4W1UFhPTRzTIHWP',
       }),
-    ).rejects.toEqual(new AuthenticateUserError());
+    ).rejects.toEqual(new AuthenticateUserException());
   });
 
   it('should not be able to authenticate with wrong password', async () => {
@@ -67,6 +67,6 @@ describe('AuthenticateUserUseCase', () => {
         email: 'darrion72@yahoo.com',
         password: 'wrong-password',
       }),
-    ).rejects.toEqual(new AuthenticateUserError());
+    ).rejects.toEqual(new AuthenticateUserException());
   });
 });
