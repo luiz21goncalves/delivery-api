@@ -39,7 +39,7 @@ jobs:
           DB_USER: docker
           DB_PASSWORD: docker
           DB_PORT: 5432
-          DB_HOST:
+          DB_HOST: database
           LOGGER_LEVEL: error
           SECRET: secret
           EXPIRES_IN: 1d
