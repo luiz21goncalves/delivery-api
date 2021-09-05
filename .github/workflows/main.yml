@@ -3,7 +3,7 @@ name: CI
 on:
   workflow_run:
     workflows: ['Test']
-    branches: ['pull_request', 'push']
+    branches: ['main']
     types:
       - completed
 
