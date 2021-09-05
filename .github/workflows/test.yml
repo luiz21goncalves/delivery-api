@@ -35,7 +35,7 @@ jobs:
       - name: Run Jest
         run: yarn test
         env:
-          DB_NAME: docker
+          DB_NAME: delivery
           DB_USER: docker
           DB_PASSWORD: docker
           DB_PORT: 5432
