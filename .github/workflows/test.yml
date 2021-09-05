@@ -3,7 +3,6 @@ name: Test
 on:
   workflow_run:
     workflows: ['Lint']
-    branches: ['push', 'pull_request']
     types:
       - completed
 
