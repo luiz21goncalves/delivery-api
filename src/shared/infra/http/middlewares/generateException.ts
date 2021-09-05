@@ -10,14 +10,13 @@ function generateException(
   _: NextFunction,
 ): Response {
   if (err instanceof AppException) {
-    logger.error({ middleware: 'app exception', err });
+    logger.debug({ middleware: 'app exception', err });
 
     return response.status(err.statusCode).json({
       message: request.t(err.message),
       statusCode: err.statusCode,
     });
   }
-
   logger.error({ middleware: 'internal exception', err });
 
   return response.status(500).json({

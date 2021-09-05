@@ -1,5 +1,6 @@
 import 'reflect-metadata';
 
+import { errors } from 'celebrate';
 import cors from 'cors';
 import express from 'express';
 import 'express-async-errors';
@@ -10,7 +11,6 @@ import Backend from 'i18next-node-fs-backend';
 import pino from 'pino';
 
 import '@shared/container';
-
 import { createDatabaseConnetion } from '../typeorm';
 import { generateException } from './middlewares/generateException';
 import { routes } from './routes';
@@ -49,6 +49,7 @@ app.use(express.json());
 app.use(cors());
 app.use(i18nextMiddleware.handle(i18next));
 app.use(routes);
+app.use(errors());
 app.use(generateException);
 
 export { app };
