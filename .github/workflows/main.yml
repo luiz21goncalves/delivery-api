@@ -2,8 +2,8 @@ name: CI
 
 on:
   workflow_run:
-    workflows: ['Test']
-    branches: ['push']
+    workflows: ['Lint code']
+    branches: ['main']
     types:
       - completed
 
@@ -12,6 +12,21 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    services:
+      database:
+        image: postgres:13
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: docker
+          POSTGRES_PASSWORD: docker
+          POSTGRES_DB: delivery
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
       - uses: actions/checkout@v2
@@ -23,6 +38,19 @@ jobs:
 
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
+
+
+      - name: Run Jest
+        run: yarn test
+        env:
+          DB_NAME: delivery
+          DB_USER: docker
+          DB_PASSWORD: docker
+          DB_PORT: 5432
+          DB_HOST: database
+          LOGGER_LEVEL: error
+          SECRET: secret
+          EXPIRES_IN: 1d
 
       - name: build
         run: yarn build
