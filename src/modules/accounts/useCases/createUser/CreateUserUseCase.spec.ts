@@ -1,7 +1,7 @@
 import { InMemoryUsersRepository } from '@modules/accounts/repositories/in-memory/InMemoryUsersRepository';
 import { InMemoryHashProvider } from '@shared/container/providers/HashProvider/in-memory/InMemoryHashProvider';
 
-import { CreateUserError } from './CreateUserError';
+import { CreateUserException } from './CreateUserException';
 import { CreateUserUseCase } from './CreateUserUseCase';
 
 let createUserUseCase: CreateUserUseCase;
@@ -49,6 +49,6 @@ describe('CreateUserUseCase', () => {
         email: 'duplicate@email.com',
         password: '359rSMFcx_hl997',
       }),
-    ).rejects.toEqual(new CreateUserError());
+    ).rejects.toEqual(new CreateUserException());
   });
 });
