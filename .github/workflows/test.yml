@@ -32,15 +32,11 @@ jobs:
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
 
-      - name: Copy environment variables
-        run: |
-          cp .env.example .env.test
-
       - name: Run Jest
         run: yarn test
         env:
-          DATABASE_NAME: docker
-          DATABASE_USER: docker
-          DATABASE_PASS: docker
-          DATABASE_PORT: 5432
-          DATABASE_HOST: database
+          DB_NAME: docker
+          DB_USER: docker
+          DB_PASSWORD: docker
+          DB_PORT: 5432
+          DB_HOST: database
