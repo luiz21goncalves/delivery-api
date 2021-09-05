@@ -2,8 +2,7 @@ name: CI
 
 on:
   workflow_run:
-    workflows: ['Lint code']
-    branches: ['main']
+    workflows: ['Lint']
     types:
       - completed
 
