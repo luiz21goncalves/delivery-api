@@ -75,7 +75,7 @@ describe('AuthenticateUserController', () => {
 
     expect(status).toEqual(400);
     expect(body).toMatchObject({
-      error: 'Email or password incorrect',
+      message: 'Incorrect credentials, try again.',
       statusCode: 400,
     });
   });

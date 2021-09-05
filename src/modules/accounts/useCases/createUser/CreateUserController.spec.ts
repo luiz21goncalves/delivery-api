@@ -60,7 +60,7 @@ describe('CreateUserController', () => {
     });
     expect(status).toEqual(400);
     expect(body).toEqual({
-      error: 'User already exists',
+      message: 'This email is already registered.',
       statusCode: 400,
     });
   });
