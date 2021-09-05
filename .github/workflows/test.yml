@@ -16,7 +16,7 @@ jobs:
         env:
           POSTGRES_USER: docker
           POSTGRES_PASSWORD: docker
-          POSTGRES_DB: umbriel
+          POSTGRES_DB: delivery
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -40,7 +40,7 @@ jobs:
         run: yarn test
         env:
           DATABASE_NAME: docker
-          DATABASE_USER: postgres
+          DATABASE_USER: docker
           DATABASE_PASS: docker
           DATABASE_PORT: 5432
           DATABASE_HOST: database
