@@ -21,6 +21,7 @@
     "prettier"
   ],
   "rules": {
+    "object-curly-newline": "off",
     "no-empty-function": "off",
     "prettier/prettier": "error",
     "camelcase": "off",
