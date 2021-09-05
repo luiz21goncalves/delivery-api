@@ -1,8 +1,11 @@
 name: CI
 
 on:
-  push:
-    branches: [ main ]
+  workflow_run:
+    workflows: ['Run Test']
+    branches: ['push']
+    types:
+      - completed
 
   workflow_dispatch:
 
