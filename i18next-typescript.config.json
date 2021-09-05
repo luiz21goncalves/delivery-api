@@ -1,6 +1,6 @@
 {
   "inFolder": "src/shared/resources/locales/en",
-  "outFile": "src/@types/i18n.keys.ts",
+  "outFile": "src/shared/dtos/i18next.keys.ts",
   "defaultNs": "translation",
   "indent": 2,
   "typeName": "TranslationKeys",
