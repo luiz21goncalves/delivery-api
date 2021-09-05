@@ -1,11 +1,11 @@
-import { TranslationKeys } from '@types/i18next.keys';
+import { ResourceKey } from 'i18next';
 
 class AppException {
-  public readonly message: TranslationKeys;
+  public readonly message: ResourceKey;
 
   public readonly statusCode: number;
 
-  constructor(message: TranslationKeys, statusCode = 400) {
+  constructor(message: ResourceKey, statusCode = 400) {
     Object.assign(this, { message, statusCode });
   }
 }
