@@ -14,7 +14,10 @@ export default {
   testEnvironment: 'node',
   testMatch: ['**/*.spec.ts'],
   setupFiles: ['<rootDir>/setup-tests.ts'],
-  collectCoverageFrom: ['<rootDir>/src/modules/**/useCases/**/*.ts'],
+  collectCoverageFrom: [
+    '<rootDir>/src/modules/**/useCases/**/*.ts',
+    '!<rootDir>/src/**/I*DTO.ts',
+  ],
   coverageDirectory: 'coverage',
   coverageReporters: ['text', 'lcov'],
 };

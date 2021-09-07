@@ -1,8 +1,7 @@
 import { InMemoryUsersRepository } from '@modules/accounts/repositories/in-memory/InMemoryUsersRepository';
+import { CreateUserException } from '@modules/accounts/useCases/createUser/CreateUserException';
+import { CreateUserUseCase } from '@modules/accounts/useCases/createUser/CreateUserUseCase';
 import { InMemoryHashProvider } from '@shared/container/providers/HashProvider/in-memory/InMemoryHashProvider';
-
-import { CreateUserException } from './CreateUserException';
-import { CreateUserUseCase } from './CreateUserUseCase';
 
 let createUserUseCase: CreateUserUseCase;
 let inMemoryUsersRepository: InMemoryUsersRepository;

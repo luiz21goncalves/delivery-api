@@ -1,8 +1,7 @@
 import { InMemoryUsersRepository } from '@modules/accounts/repositories/in-memory/InMemoryUsersRepository';
+import { AuthenticateUserException } from '@modules/accounts/useCases/authenticateUser/AuthenticateUserException';
+import { AuthenticateUserUseCase } from '@modules/accounts/useCases/authenticateUser/AuthenticateUserUseCase';
 import { InMemoryHashProvider } from '@shared/container/providers/HashProvider/in-memory/InMemoryHashProvider';
-
-import { AuthenticateUserException } from './AuthenticateUserException';
-import { AuthenticateUserUseCase } from './AuthenticateUserUseCase';
 
 let authenticateUserUseCase: AuthenticateUserUseCase;
 let inMemoryUsersRepository: InMemoryUsersRepository;
@@ -40,7 +39,7 @@ describe('AuthenticateUserUseCase', () => {
     });
   });
 
-  it('should not be able to authenticate without non existing user', async () => {
+  it('should not be able to authenticate without non-existing user', async () => {
     await inMemoryUsersRepository.create({
       name: 'Mindy Sauer',
       email: 'litzy71@gmail.com',
