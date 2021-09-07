@@ -10,6 +10,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "cross-env NODE_ENV=test jest --runInBand --detectOpenHandles",
+    "test:watch": "cross-env NODE_ENV=test jest --watch --verbose --runInBand --detectOpenHandles",
+    "test:cov": "cross-env NODE_ENV=test jest --coverage --runInBand --detectOpenHandles",
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
     "update:dependencies": "yarn --frozen-lockfile --production",
     "migrations": "cross-env NODE_ENV=production ./node_modules/typeorm/cli.js migration:run",
